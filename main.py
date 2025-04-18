@@ -1,5 +1,6 @@
 from PPlay.window import *
 from PPlay.sprite import *
+import random
 
 # gerando janela do jogo
 janela = Window(1240, 650)
@@ -30,8 +31,9 @@ while(True):
     if (keyboard.key_pressed("SPACE")):
         velx = -400
         vely = -400
-        barra_ia_vel = 345 # caso queira deixar aumentar a dificuldade basta mudar a velocidade da ia
-
+        # caso queira deixar aumentar a dificuldade basta mudar a velocidade da ia
+        barra_ia_vel = random.randint(330,350) 
+        
     # pressione ESC para fechar o jogo
     if keyboard.key_pressed("ESC"):
         break
@@ -44,7 +46,7 @@ while(True):
 
     # controla a colisão da bolinha com as barras
     if bar1.collided(bolinha):
-        if velx <= 950 and velx >= -950:
+        if velx <= 1000 and velx >= -1000:
             velx *= -1.08
             bolinha.x = bar1.x + bar1.width
         else:
@@ -52,7 +54,7 @@ while(True):
             bolinha.x = bar1.x + bar1.width
 
     if bar2.collided(bolinha):
-        if velx <= 950 and velx >= -950: 
+        if velx <= 1000 and velx >= -1000: 
             velx *= -1.08
             bolinha.x = janela.width - 2*bar2.width - bolinha.width
         else:
